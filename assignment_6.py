@@ -16,14 +16,18 @@ while True:
         #add student information
         if user_input == "1":
             student_name = input("Enter student name: ").strip().title()
-            student_age = input("Enter student age: ")
-            student_grade = input("Enter student grade: ").strip().title()
-            student_course = input("Enter student course: ").strip().title()
-            print(f"{student_name} has been added to the system")
-            #store student details in nested dictionary
-            student_system[student_name] = {"name": student_name , "age": student_age , "grade": student_grade , "course": student_course }
-            print()
-
+            #check for duplicates
+            if student_name not in student_system:
+                student_age = input("Enter student age: ")
+                student_grade = input("Enter student grade: ").strip().title()
+                student_course = input("Enter student course: ").strip().title()
+                print(f"{student_name} has been added to the system")
+                #store student details in nested dictionary
+                student_system[student_name] = {"name": student_name , "age": student_age , "grade": student_grade , "course": student_course }
+                print()
+            else:
+                print("Student name already in system")
+                print()
         #remove students in the system
         elif user_input == "2":
             remove_student = input("Enter student name to remove: ").strip().title()
